@@ -119,7 +119,7 @@ pub(crate) fn parse(tokens: &mut Peekable<token_stream::IntoIter>) -> Result<Vec
                     };
                     segments.push(Segment::Modifier(colon, ident));
                 }
-                _ => return Err(Error::new(punct.span(), "unexpected punct")),
+                _ => return Err(Error::new(punct.span(), &format!("unexpected punct `{}`, segments: {}", &punct, &segments))),
             },
             TokenTree::Group(group) => {
                 if group.delimiter() == Delimiter::None {
