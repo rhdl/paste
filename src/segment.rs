@@ -2,6 +2,7 @@ use crate::error::{Error, Result};
 use proc_macro::{token_stream, Delimiter, Ident, Span, TokenTree};
 use std::iter::Peekable;
 
+#[derive(Debug)]
 pub(crate) enum Segment {
     String(LitStr),
     Apostrophe(Span),
@@ -9,11 +10,13 @@ pub(crate) enum Segment {
     Modifier(Colon, Ident),
 }
 
+#[derive(Debug)]
 pub(crate) struct LitStr {
     pub value: String,
     pub span: Span,
 }
 
+#[derive(Debug)]
 pub(crate) struct Colon {
     pub span: Span,
 }
